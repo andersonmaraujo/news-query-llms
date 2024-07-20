@@ -1,0 +1,7 @@
+streamlit
+requests
+pinecone-client
+transformers
+pandas
+numpy
+torch
