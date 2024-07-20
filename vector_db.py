@@ -6,19 +6,19 @@ from process_news import embed_text
 
 def initialize_pinecone():
     pc = Pinecone(api_key=PINECONE_API_KEY)
-    index_name = 'news-articles'
+    index_name = 'news-articles-llms'
     return pc.Index(index_name)
 
 def store_embeddings(index, articles):
     for article in articles:
         embedding = embed_text(article['title'] + " " + article['content'])
-        index.upsert([(article['article_id'], embedding.tolist())])
+        index.upsert([(article['article_id'], embedding[0])])
 
 # Example usage
 if __name__ == "__main__":
     index = initialize_pinecone()
     articles = [
-        {"id": "1", "title": "NVIDIA earnings report", "content": "NVIDIA reported higher-than-expected earnings for the last quarter."},
+        {"article_id": "1", "title": "NVIDIA earnings report", "content": "NVIDIA reported higher-than-expected earnings for the last quarter."},
         # Add more articles
     ]
     store_embeddings(index, articles)
