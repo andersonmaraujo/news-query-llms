@@ -5,3 +5,5 @@ transformers
 pandas
 numpy
 torch
+newsapi-python
+python-dotenv

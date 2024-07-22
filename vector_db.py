@@ -11,8 +11,9 @@ def initialize_pinecone():
 
 def store_embeddings(index, articles):
     for article in articles:
-        embedding = embed_text(article['title'] + " " + article['content'])
-        index.upsert([(article['article_id'], embedding[0])])
+        text = article.get('title', '') + " " + article.get('content', '')
+        embedding = embed_text(text)
+        index.upsert([(article['article_id'], embedding.tolist())])
 
 # Example usage
 if __name__ == "__main__":
