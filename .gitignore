@@ -4,3 +4,4 @@ __pycache__/fetch_news.cpython-311.pyc
 __pycache__/config.cpython-311.pyc
 config.py
 config.py
+.env
